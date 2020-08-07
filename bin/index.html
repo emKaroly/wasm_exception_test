@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    <title>Wasm Test</title>
+</head>
+<body>
+    <button onclick="function_call_1()">Function 1</button>
+    <span id="function_1"></span>
+
+    <!-- Include the JavaScript glue code. -->
+    <!-- This will load the WebAssembly module and run its main. --> 
+    <script src="Wasm_Test.js"></script>
+    <script>
+        function function_call_1(){
+            document.getElementById('function_1').innerHTML = _hello(69);
+        }
+    </script>
+</body>
+</html> 
