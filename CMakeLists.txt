@@ -8,10 +8,20 @@ set(srcFiles
 
 add_executable(${PROJECT_NAME} ${srcFiles})
 
+target_compile_options(${PROJECT_NAME}
+  PUBLIC
+  "SHELL:-s DISABLE_EXCEPTION_CATCHING=0"
+  )
+
+target_link_options(${PROJECT_NAME}
+  PUBLIC
+  "SHELL:-s DISABLE_EXCEPTION_CATCHING=0"
+  "SHELL:-s EXPORTED_FUNCTIONS='[_hello]'"
+  )
+
 set_target_properties(${PROJECT_NAME}
     PROPERTIES
     CXX_STANDARD 17
-    LINK_FLAGS "-s EXPORTED_FUNCTIONS='[_hello]' -s DISABLE_EXCEPTION_CATCHING=0"
     CXX_STANDARD_REQUIRED TRUE
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin"
     )
